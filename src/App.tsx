@@ -3,14 +3,13 @@ import AppLayout from '@/components/layout/AppLayout'
 import LoginPage from '@/features/auth/LoginPage'
 import RegisterPage from '@/features/auth/RegisterPage'
 import OnboardingWizard from '@/features/onboarding/OnboardingWizard'
+import DashboardPage from '@/features/dashboard/DashboardPage'
 import ContactsPage from '@/features/contacts/ContactsPage'
+import ContactDetail from '@/features/contacts/ContactDetail'
 import PipelinePage from '@/features/pipeline/PipelinePage'
 import TasksPage from '@/features/tasks/TasksPage'
-import DashboardPage from '@/features/dashboard/DashboardPage'
-import {
-  WorkspacesPage,
-  SettingsPage,
-} from '@/features/placeholder/PlaceholderPages'
+import SettingsPage from '@/features/settings/SettingsPage'
+import { WorkspacesPage } from '@/features/placeholder/PlaceholderPages'
 
 function App() {
   return (
@@ -25,6 +24,7 @@ function App() {
         <Route element={<AppLayout />}>
           <Route path="/" element={<DashboardPage />} />
           <Route path="/contacts" element={<ContactsPage />} />
+          <Route path="/contacts/:id" element={<ContactDetail />} />
           <Route path="/pipeline" element={<PipelinePage />} />
           <Route path="/tasks" element={<TasksPage />} />
           <Route path="/workspaces" element={<WorkspacesPage />} />

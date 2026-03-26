@@ -1,4 +1,4 @@
-import { LayoutDashboard, Users, Kanban, CheckSquare, Building2, Settings } from 'lucide-react'
+import { Building2 } from 'lucide-react'
 
 function PlaceholderPage({ title, icon: Icon }: { title: string; icon: React.ElementType }) {
   return (
@@ -15,9 +15,4 @@ function PlaceholderPage({ title, icon: Icon }: { title: string; icon: React.Ele
   )
 }
 
-export function DashboardPage() { return <PlaceholderPage title="Dashboard" icon={LayoutDashboard} /> }
-export function ContactsPage() { return <PlaceholderPage title="Contatti" icon={Users} /> }
-export function PipelinePage() { return <PlaceholderPage title="Pipeline" icon={Kanban} /> }
-export function TasksPage() { return <PlaceholderPage title="Attività" icon={CheckSquare} /> }
 export function WorkspacesPage() { return <PlaceholderPage title="Workspace" icon={Building2} /> }
-export function SettingsPage() { return <PlaceholderPage title="Impostazioni" icon={Settings} /> }
