@@ -9,7 +9,7 @@ import ContactDetail from '@/features/contacts/ContactDetail'
 import PipelinePage from '@/features/pipeline/PipelinePage'
 import TasksPage from '@/features/tasks/TasksPage'
 import SettingsPage from '@/features/settings/SettingsPage'
-import { WorkspacesPage } from '@/features/placeholder/PlaceholderPages'
+import WorkspacesPage from '@/features/workspaces/WorkspacesPage'
 
 function App() {
   return (

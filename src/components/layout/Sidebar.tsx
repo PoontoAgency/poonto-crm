@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import { useUiStore } from '@/store/uiStore'
+import WorkspaceSwitcher from '@/features/workspaces/WorkspaceSwitcher'
 import {
   LayoutDashboard, Users, Kanban, CheckSquare,
   Settings, Building2, X
@@ -42,8 +43,13 @@ export default function Sidebar() {
           </button>
         </div>
 
+        {/* Workspace Switcher */}
+        <div className="py-3">
+          <WorkspaceSwitcher />
+        </div>
+
         {/* Nav */}
-        <nav className="flex-1 px-3 py-4 space-y-1">
+        <nav className="flex-1 px-3 py-2 space-y-1">
           {navItems.map(({ to, icon: Icon, label }) => (
             <NavLink
               key={to}
