@@ -25,12 +25,26 @@ export async function getSession() {
 }
 
 export async function getUserWorkspaces(): Promise<Workspace[]> {
+  // Prima recupera gli ID dei workspace dell'utente
+  const { data: user } = await supabase.auth.getUser()
+  if (!user?.user) return []
+
+  const { data: memberships, error: memErr } = await supabase
+    .from('workspace_members')
+    .select('workspace_id')
+    .eq('user_id', user.user.id)
+
+  if (memErr || !memberships?.length) return []
+
+  const wsIds = memberships.map(m => m.workspace_id)
+
   const { data, error } = await supabase
     .from('workspaces')
-    .select('*, workspace_members!inner(user_id, role)')
+    .select('*')
+    .in('id', wsIds)
     .order('created_at')
 
-  if (error) throw error
+  if (error) return []
   return data || []
 }
 
@@ -56,5 +70,10 @@ export async function createWorkspace(
     .single()
 
   if (error) throw error
+
+  // Aspetta un attimo che il trigger auto_add_workspace_owner faccia il suo lavoro
+  await new Promise(r => setTimeout(r, 200))
+
   return data
 }
+
